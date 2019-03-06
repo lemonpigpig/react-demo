@@ -1,28 +1,36 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+// add react-router-dom 前端路由
+import {
+  BrowserRouter as Router,
+  Route
+  //   NavLink
+  //   Switch,
+  //   Redirect
+} from 'react-router-dom'
+import './App.css'
+import Layout from './layout/index'
+// function About() {
+//   return (
+//     <div>
+//       <h2>About</h2>
+//     </div>
+//   )
+// }
 
 class App extends Component {
+  static defaultProps = {
+    color: 'red'
+  }
   render() {
+    //     debugger
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+      <Router>
+        <Route>
+          <Layout />
+        </Route>
+      </Router>
+    )
   }
 }
 
-export default App;
+export default App
