@@ -22,7 +22,7 @@ class Header extends Component {
           <ul>
             <li>
               <NavLink to="/" activeClassName="selected">
-                Home
+                Home1
               </NavLink>
             </li>
             <li>

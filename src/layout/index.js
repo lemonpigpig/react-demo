@@ -14,13 +14,23 @@ class Layout extends Component {
   static defaultProps = {
     text: 'i am a layout'
   }
-
+  handleInput = e => {
+    const { value } = e.target
+    console.log('----handleInput----:', value)
+    this.setState({
+      inputValue: value
+    })
+  }
+  state = {
+    inputValue: 'lalal'
+  }
   render() {
-    console.log('---this.props---:', this.props)
+    console.log('---this.props---:', this.state)
     const data = {
       text: 'header'
     }
     const color = 'red'
+    const { inputValue } = this.state
     return (
       <div className="layout">
         <Header {...data} />
@@ -28,12 +38,17 @@ class Layout extends Component {
           111:
           <Route path="/" component={Home} exact />
           2222:
-          <Route path="/user" component={User} exact />
+          <Route path="/user" component={User} />
         </div>
         <div>
           <div className="App">
-            <input type="text" style={{ color }} />
-
+            <input
+              type="text"
+              style={{ color }}
+              onChange={this.handleInput}
+              value={inputValue}
+            />
+            this input value is updated to: {inputValue}
             <header className="App-header">
               <img src={logo} className="App-logo" alt="logo" />
               <p>

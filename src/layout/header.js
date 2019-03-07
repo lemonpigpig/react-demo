@@ -28,6 +28,7 @@ class Header extends Component {
           <li>
             <NavLink
               to="/"
+              exact
               activeStyle={{
                 fontWeight: 'bold',
                 color: 'red'

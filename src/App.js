@@ -9,17 +9,10 @@ import {
 } from 'react-router-dom'
 import './App.css'
 import Layout from './layout/index'
-// function About() {
-//   return (
-//     <div>
-//       <h2>About</h2>
-//     </div>
-//   )
-// }
 
 class App extends Component {
   static defaultProps = {
-    color: 'red'
+    color: 'blue'
   }
   render() {
     //     debugger
