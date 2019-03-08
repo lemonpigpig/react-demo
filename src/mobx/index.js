@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
+import Test from '../components/test'
 @decorator
 class a {}
 function decorator(target) {
@@ -20,6 +21,7 @@ class Mobx extends Component {
   render() {
     return (
       <div className="Mobx">
+        <Test {...appState} />
         <div>Mobx:{appState.counter}</div>
         <button onClick={this.increment}>click increment</button>
       </div>
