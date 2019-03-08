@@ -16,39 +16,44 @@ class Header extends Component {
   }
   render() {
     const { text } = this.props
+    const menuList = [
+      {
+        name: 'Home',
+        path: '/',
+        id: 1
+      },
+      {
+        name: 'user',
+        path: '/user',
+        id: 2
+      },
+      {
+        name: 'about',
+        path: '/about',
+        id: 3
+      }
+    ]
     return (
       <header>
         <h1>{text}</h1>
         <ul>
-          {/* <li>
-              <NavLink to="/" activeClassName="selected">
-                Home
-              </NavLink>
-            </li> */}
-          <li>
-            <NavLink
-              to="/"
-              exact
-              activeStyle={{
-                fontWeight: 'bold',
-                color: 'red'
-              }}
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/user"
-              activeStyle={{
-                fontWeight: 'bold',
-                color: 'red'
-              }}
-            >
-              user
-            </NavLink>
-          </li>
-          <li>about</li>
+          {menuList.map(menu => {
+            return (
+              <li key={menu.id}>
+                <NavLink
+                  to={menu.path}
+                  exact
+                  activeStyle={{
+                    fontWeight: 'bold',
+                    color: 'red'
+                  }}
+                >
+                  {menu.name}
+                </NavLink>
+              </li>
+            )
+          })}
+          <li />
         </ul>
       </header>
     )
