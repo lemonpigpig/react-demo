@@ -10,7 +10,7 @@ import {
 import User from '../user/index'
 import Home from '../home/index'
 import Mobx from '../mobx/index'
-
+import Detail from '../user/detail'
 import logo from '../logo.svg'
 class Layout extends Component {
   static defaultProps = {
@@ -40,7 +40,8 @@ class Layout extends Component {
           111:
           <Route path="/" component={Home} exact />
           2222:
-          <Route path="/user" component={User} />
+          <Route path="/user" component={User} exact />
+          <Route path="/user/:id" component={Detail} />
           <Route path="/mobx" component={Mobx} />
         </div>
         <div>
