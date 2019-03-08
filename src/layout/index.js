@@ -9,6 +9,8 @@ import {
 } from 'react-router-dom'
 import User from '../user/index'
 import Home from '../home/index'
+import Mobx from '../mobx/index'
+
 import logo from '../logo.svg'
 class Layout extends Component {
   static defaultProps = {
@@ -39,6 +41,7 @@ class Layout extends Component {
           <Route path="/" component={Home} exact />
           2222:
           <Route path="/user" component={User} />
+          <Route path="/mobx" component={Mobx} />
         </div>
         <div>
           <div className="App">

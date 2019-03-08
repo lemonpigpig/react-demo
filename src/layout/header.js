@@ -28,8 +28,8 @@ class Header extends Component {
         id: 2
       },
       {
-        name: 'about',
-        path: '/about',
+        name: 'mobx',
+        path: '/mobx',
         id: 3
       }
     ]
