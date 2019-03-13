@@ -41,7 +41,7 @@ class Layout extends Component {
           <Route path="/" component={Home} exact />
           2222:
           <Route path="/user" component={User} exact />
-          <Route path="/user/:id" component={Detail} />
+          <Route path="/user/:id" component={Detail} mat/>
           <Route path="/mobx" component={Mobx} />
         </div>
         <div>

@@ -28,6 +28,7 @@ class Mobx extends Component {
         <Test {...appState} />
         <div>getComputedA:{this.getComputedA}</div>
         <div>Mobx:{appState.counter}</div>
+        <button onClick={}></button>
         <button onClick={this.increment}>click increment</button>
       </div>
     )

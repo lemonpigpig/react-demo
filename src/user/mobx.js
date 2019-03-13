@@ -1,4 +1,4 @@
-import { observable, computed } from 'mobx'
+import { observable, computed, autorun } from 'mobx'
 // import { get } from 'https'
 class userMobx {
   name = 'lemon'
@@ -15,5 +15,8 @@ class userMobx {
     console.log('set fullname:', name)
     this.firstName = `changed ${name}`
   }
+  disposer = autorun(() => {
+    console.log('---autorun---', this.fullName)
+  })
 }
 export default new userMobx()
