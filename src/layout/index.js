@@ -28,6 +28,7 @@ class Layout extends Component {
   }
   render() {
     console.log('---this.props---:', this.state)
+    console.log('---Layout children----:', this.props.children)
     const data = {
       text: 'header'
     }
@@ -41,17 +42,12 @@ class Layout extends Component {
           <Route path="/" component={Home} exact />
           2222:
           <Route path="/user" component={User} exact />
-          <Route path="/user/:id" component={Detail} mat/>
+          <Route path="/user/:id" component={Detail} mat />
           <Route path="/mobx" component={Mobx} />
         </div>
         <div>
           <div className="App">
-            <input
-              type="text"
-              style={{ color }}
-              onChange={this.handleInput}
-              value={inputValue}
-            />
+            <input type="text" style={{ color }} onChange={this.handleInput} value={inputValue} />
             this input value is updated to: {inputValue}
             <header className="App-header">
               <img src={logo} className="App-logo" alt="logo" />

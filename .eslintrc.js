@@ -5,12 +5,27 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2017,
     sourceType: 'module',
-    codeFrame: false
+    codeFrame: false,
+    ecmaFeatures: {
+      modules: true,
+      jsx: true,
+      forOf: true,
+      blockBindings: true,
+      arrowFunctions: true,
+      classes: true,
+      defaultParams: true,
+      destructuring: true,
+      generators: true,
+      restParams: true,
+      spread: true,
+      superInFunctions: true,
+      templateStrings: true,
+      experimentalObjectRestSpread: true,
+      legacyDecorators: true
+    }
   },
   env: {
     browser: true,
-    mocha: true,
-    jasmine: true,
     es6: true,
     node: true
   },
@@ -24,7 +39,7 @@ module.exports = {
     'prettier/standard'
   ],
   // required to lint *.js jsx files
-  plugins: ['flowtype', 'prettier', 'standard', 'react', 'jsx-a11y', 'import'],
+  plugins: ['flowtype', 'prettier', 'standard', 'react', 'jsx-a11y', 'import', 'babel'],
   settings: {
     flowtype: {
       onlyFilesWithFlowAnnotation: false
@@ -33,7 +48,7 @@ module.exports = {
   // add your custom rules here
   rules: {
     // allow paren-less arrow functions
-    'prettier/prettier': ['error'],
+    // 'prettier/prettier': ['error'],
     'arrow-parens': 0,
     semi: 0,
     'no-tabs': 2,

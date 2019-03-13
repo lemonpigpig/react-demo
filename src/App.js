@@ -19,7 +19,10 @@ class App extends Component {
     return (
       <Router>
         <Route>
-          <Layout />
+          <Layout>
+            hello world
+            <div>lalal</div>
+          </Layout>
         </Route>
       </Router>
     )

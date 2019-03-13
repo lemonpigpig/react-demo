@@ -1,6 +1,6 @@
 import { observable, computed, autorun } from 'mobx'
 // import { get } from 'https'
-class userMobx {
+class UserMobx {
   name = 'lemon'
   @observable firstName = 'first'
   @observable lastName = 'last'
@@ -19,4 +19,4 @@ class userMobx {
     console.log('---autorun---', this.fullName)
   })
 }
-export default new userMobx()
+export default new UserMobx()

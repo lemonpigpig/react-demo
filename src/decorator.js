@@ -1,9 +1,11 @@
 function _typeof(obj) {
   if (typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol') {
+    // eslint-disable-next-line
     _typeof = function _typeof(obj) {
       return typeof obj
     }
   } else {
+    // eslint-disable-next-line
     _typeof = function _typeof(obj) {
       return obj &&
         typeof Symbol === 'function' &&
@@ -17,11 +19,7 @@ function _typeof(obj) {
 }
 
 function _instanceof(left, right) {
-  if (
-    right != null &&
-    typeof Symbol !== 'undefined' &&
-    right[Symbol.hasInstance]
-  ) {
+  if (right != null && typeof Symbol !== 'undefined' && right[Symbol.hasInstance]) {
     return right[Symbol.hasInstance](left)
   } else {
     return left instanceof right
@@ -53,15 +51,13 @@ function _decorate(decorators, factory, superClass, mixins) {
 }
 
 function _getDecoratorsApi() {
+  // eslint-disable-next-line
   _getDecoratorsApi = function _getDecoratorsApi() {
     return api
   }
   var api = {
     elementsDefinitionOrder: [['method'], ['field']],
-    initializeInstanceElements: function initializeInstanceElements(
-      O,
-      elements
-    ) {
+    initializeInstanceElements: function initializeInstanceElements(O, elements) {
       ;['method', 'field'].forEach(function(kind) {
         elements.forEach(function(element) {
           if (element.kind === kind && element.placement === 'own') {
@@ -75,10 +71,7 @@ function _getDecoratorsApi() {
       ;['method', 'field'].forEach(function(kind) {
         elements.forEach(function(element) {
           var placement = element.placement
-          if (
-            element.kind === kind &&
-            (placement === 'static' || placement === 'prototype')
-          ) {
+          if (element.kind === kind && (placement === 'static' || placement === 'prototype')) {
             var receiver = placement === 'static' ? F : proto
             this.defineClassElement(receiver, element)
           }
@@ -120,11 +113,7 @@ function _getDecoratorsApi() {
       result.finishers = finishers
       return result
     },
-    addElementPlacement: function addElementPlacement(
-      element,
-      placements,
-      silent
-    ) {
+    addElementPlacement: function addElementPlacement(element, placements, silent) {
       var keys = placements[element.placement]
       if (!silent && keys.indexOf(element.key) !== -1) {
         throw new TypeError('Duplicated element (' + element.key + ')')
@@ -134,11 +123,7 @@ function _getDecoratorsApi() {
     decorateElement: function decorateElement(element, placements) {
       var extras = []
       var finishers = []
-      for (
-        var decorators = element.decorators, i = decorators.length - 1;
-        i >= 0;
-        i--
-      ) {
+      for (var decorators = element.decorators, i = decorators.length - 1; i >= 0; i--) {
         var keys = placements[element.placement]
         keys.splice(keys.indexOf(element.key), 1)
         var elementObject = this.fromElementDescriptor(element)
@@ -164,9 +149,7 @@ function _getDecoratorsApi() {
       var finishers = []
       for (var i = decorators.length - 1; i >= 0; i--) {
         var obj = this.fromClassDescriptor(elements)
-        var elementsAndFinisher = this.toClassDescriptor(
-          (0, decorators[i])(obj) || obj
-        )
+        var elementsAndFinisher = this.toClassDescriptor((0, decorators[i])(obj) || obj)
         if (elementsAndFinisher.finisher !== undefined) {
           finishers.push(elementsAndFinisher.finisher)
         }
@@ -178,9 +161,7 @@ function _getDecoratorsApi() {
                 elements[j].key === elements[k].key &&
                 elements[j].placement === elements[k].placement
               ) {
-                throw new TypeError(
-                  'Duplicated element (' + elements[j].key + ')'
-                )
+                throw new TypeError('Duplicated element (' + elements[j].key + ')')
               }
             }
           }
@@ -204,11 +185,7 @@ function _getDecoratorsApi() {
       if (elementObjects === undefined) return
       return _toArray(elementObjects).map(function(elementObject) {
         var element = this.toElementDescriptor(elementObject)
-        this.disallowProperty(
-          elementObject,
-          'finisher',
-          'An element descriptor'
-        )
+        this.disallowProperty(elementObject, 'finisher', 'An element descriptor')
         this.disallowProperty(elementObject, 'extras', 'An element descriptor')
         return element
       }, this)
@@ -226,11 +203,7 @@ function _getDecoratorsApi() {
       }
       var key = _toPropertyKey(elementObject.key)
       var placement = String(elementObject.placement)
-      if (
-        placement !== 'static' &&
-        placement !== 'prototype' &&
-        placement !== 'own'
-      ) {
+      if (placement !== 'static' && placement !== 'prototype' && placement !== 'own') {
         throw new TypeError(
           'An element descriptor\'s .placement property must be one of "static",' +
             ' "prototype" or "own", but a decorator created an element descriptor' +
@@ -248,27 +221,11 @@ function _getDecoratorsApi() {
         descriptor: Object.assign({}, descriptor)
       }
       if (kind !== 'field') {
-        this.disallowProperty(
-          elementObject,
-          'initializer',
-          'A method descriptor'
-        )
+        this.disallowProperty(elementObject, 'initializer', 'A method descriptor')
       } else {
-        this.disallowProperty(
-          descriptor,
-          'get',
-          'The property descriptor of a field descriptor'
-        )
-        this.disallowProperty(
-          descriptor,
-          'set',
-          'The property descriptor of a field descriptor'
-        )
-        this.disallowProperty(
-          descriptor,
-          'value',
-          'The property descriptor of a field descriptor'
-        )
+        this.disallowProperty(descriptor, 'get', 'The property descriptor of a field descriptor')
+        this.disallowProperty(descriptor, 'set', 'The property descriptor of a field descriptor')
+        this.disallowProperty(descriptor, 'value', 'The property descriptor of a field descriptor')
         element.initializer = elementObject.initializer
       }
       return element
@@ -321,9 +278,7 @@ function _getDecoratorsApi() {
     },
     disallowProperty: function disallowProperty(obj, name, objectType) {
       if (obj[name] !== undefined) {
-        throw new TypeError(
-          objectType + " can't have a ." + name + ' property.'
-        )
+        throw new TypeError(objectType + " can't have a ." + name + ' property.')
       }
     }
   }
@@ -350,11 +305,7 @@ function _createElementDescriptor(def) {
   var element = {
     kind: def.kind === 'field' ? 'field' : 'method',
     key: key,
-    placement: def.static
-      ? 'static'
-      : def.kind === 'field'
-      ? 'own'
-      : 'prototype',
+    placement: def.static ? 'static' : def.kind === 'field' ? 'own' : 'prototype',
     descriptor: descriptor
   }
   if (def.decorators) element.decorators = def.decorators
@@ -374,26 +325,16 @@ function _coalesceClassElements(elements) {
   var newElements = []
   var isSameElement = function isSameElement(other) {
     return (
-      other.kind === 'method' &&
-      other.key === element.key &&
-      other.placement === element.placement
+      other.kind === 'method' && other.key === element.key && other.placement === element.placement
     )
   }
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i]
     var other
-    if (
-      element.kind === 'method' &&
-      (other = newElements.find(isSameElement))
-    ) {
-      if (
-        _isDataDescriptor(element.descriptor) ||
-        _isDataDescriptor(other.descriptor)
-      ) {
+    if (element.kind === 'method' && (other = newElements.find(isSameElement))) {
+      if (_isDataDescriptor(element.descriptor) || _isDataDescriptor(other.descriptor)) {
         if (_hasDecorators(element) || _hasDecorators(other)) {
-          throw new ReferenceError(
-            'Duplicated methods (' + element.key + ") can't be decorated."
-          )
+          throw new ReferenceError('Duplicated methods (' + element.key + ") can't be decorated.")
         }
         other.descriptor = element.descriptor
       } else {
@@ -422,10 +363,7 @@ function _hasDecorators(element) {
 }
 
 function _isDataDescriptor(desc) {
-  return (
-    desc !== undefined &&
-    !(desc.value === undefined && desc.writable === undefined)
-  )
+  return desc !== undefined && !(desc.value === undefined && desc.writable === undefined)
 }
 
 function _optionalCallableProperty(obj, name) {
