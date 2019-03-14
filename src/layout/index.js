@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Header from './header.js'
+// import loadable from '@loadable/component'
+import loadable from 'react-loadable'
 import {
   //   BrowserRouter as Router,
   Route
@@ -7,11 +9,32 @@ import {
   //   Switch,
   //   Redirect
 } from 'react-router-dom'
-import User from '../user/index'
-import Home from '../home/index'
+// import User from '../user/index'
+// import Home from '../home/index'
 import Mobx from '../mobx/index'
 import Detail from '../user/detail'
 import logo from '../logo.svg'
+console.log('----loadable----:', loadable)
+// const Home = loadable(() => import('../home/index'), {
+//   // fallback: Loading,
+// })
+// const Home = React.lazy(() => import('./Home')
+
+// <Route exact path="/" component={props => <Home {...props} />} />
+
+const Home = loadable({
+  loader: () => import(/* webpackChunkName: "view-Home" */ '../home/index'),
+  loading: function() {
+    return <div>loading</div>
+  }
+})
+const User = loadable({
+  loader: () => import(/* webpackChunkName: "view-User" */ '../user/index'),
+  loading: function() {
+    return <div>loading</div>
+  }
+})
+console.log('---Home---:', Home)
 class Layout extends Component {
   static defaultProps = {
     text: 'i am a layout'
@@ -39,7 +62,7 @@ class Layout extends Component {
         <Header {...data} />
         <div>
           111:
-          <Route path="/" component={Home} exact />
+          <Route path="/" component={props => <Home {...props} />} exact />
           2222:
           <Route path="/user" component={User} exact />
           <Route path="/user/:id" component={Detail} mat />
