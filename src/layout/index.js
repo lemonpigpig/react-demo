@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Header from './header.js'
 // import loadable from '@loadable/component'
 import loadable from 'react-loadable'
+import RouteHook from 'react-route-hook'
 import {
   //   BrowserRouter as Router,
   Route
@@ -13,6 +14,7 @@ import {
 // import Home from '../home/index'
 import Mobx from '../mobx/index'
 import Detail from '../user/detail'
+import TestRouteHook from '../hook/index'
 import logo from '../logo.svg'
 console.log('----loadable----:', loadable)
 // const Home = loadable(() => import('../home/index'), {
@@ -47,7 +49,21 @@ class Layout extends Component {
     })
   }
   state = {
-    inputValue: 'lalal'
+    inputValue: 'lalal',
+    data: 'hello world'
+  }
+  fetchData = () => {
+    this.setState({
+      data: 'i getted the data'
+    })
+
+    console.log('------fetchData----')
+  }
+  change = () => {
+    console.log('---change----')
+  }
+  logout = () => {
+    console.log('----logout----')
   }
   render() {
     console.log('---this.props---:', this.state)
@@ -60,13 +76,19 @@ class Layout extends Component {
     return (
       <div className="layout">
         <Header {...data} />
+        <div>i am a router content show</div>
         <div>
-          111:
           <Route path="/" component={props => <Home {...props} />} exact />
-          2222:
-          <Route path="/user" component={User} exact />
-          <Route path="/user/:id" component={Detail} mat />
+          <Route path="/user" component={User} />
+          <Route path="/user/:id" component={Detail} />
           <Route path="/mobx" component={Mobx} />
+          <RouteHook
+            path="/hook/:id"
+            onEnter={this.fetchData}
+            onChange={this.change}
+            onLeave={this.logout}
+            render={routerProps => <TestRouteHook data={this.state.data} {...routerProps} />}
+          />
         </div>
         <div>
           <div className="App">

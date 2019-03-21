@@ -7,6 +7,9 @@ class Detail extends Component {
     const { match } = this.props
     return (
       <div className="user-detail">
+        <div>
+        user-detai
+        </div>
         user-{match.params.id}
         <div>name computed: {userMobx.fullName}</div>
         <button onClick={this.changeName}>changeName </button>

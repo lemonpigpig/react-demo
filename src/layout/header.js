@@ -31,6 +31,11 @@ class Header extends Component {
         name: 'mobx',
         path: '/mobx',
         id: 3
+      },
+      {
+        name: 'hook',
+        path: '/hook/1',
+        id: 4
       }
     ]
     return (

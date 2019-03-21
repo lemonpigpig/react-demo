@@ -36,7 +36,17 @@ class Header extends Component {
                 user
               </NavLink>
             </li>
-            <li>about</li>
+            <li>
+              <NavLink
+                to="/hook"
+                activeStyle={{
+                  fontWeight: 'bold',
+                  color: 'red'
+                }}
+              >
+                react router hook
+              </NavLink>
+            </li>
             <Route path="/" component={Home} exact />
             <Route path="/user" component={User} exact />
           </ul>
