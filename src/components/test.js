@@ -9,6 +9,7 @@ class Test extends Component {
     console.log('---testcounter---', this.props)
     return (
       <div>
+        testcounter
         <h1>
           {text}
           {counter}

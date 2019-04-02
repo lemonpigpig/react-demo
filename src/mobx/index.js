@@ -25,7 +25,9 @@ class Mobx extends Component {
   render() {
     return (
       <div className="Mobx">
-        <Test {...appState} />
+        <Test {...appState} ref={(node) => {
+          console.log('---node----:', node)
+        }}/>
         <div>getComputedA:{this.getComputedA}</div>
         <div>Mobx:{appState.counter}</div>
         <button onClick={this.increment}>click increment</button>

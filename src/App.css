@@ -1,4 +1,5 @@
-.App {
+@import '~antd/dist/antd.css';
+/* .App {
   text-align: center;
 }
 
@@ -22,7 +23,11 @@
 .App-link {
   color: #61dafb;
 }
-
+.home {
+  font-size: 20px;
+  color: bisque;
+  transform: translateX(10px);
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -33,4 +38,4 @@
 }
 .selected {
   color: red;
-}
+} */

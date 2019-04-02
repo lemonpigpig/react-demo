@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import {
   //   BrowserRouter as Router,
   // Route,
@@ -10,12 +11,13 @@ import {
 } from 'react-router-dom'
 // import Detail from './detail'
 import userMobx from './mobx'
-
+import '../spread/gcspread.sheets.8.40.20151.5.css'
 class User extends Component {
   render() {
     console.log('----userMobx.name---:', userMobx.name)
     return (
       <div className="user-list">
+        <div ref="spreadJs" />
         <div>name from computed: {userMobx.fullName}</div>
         <div>name from a function: {userMobx.getFullName()}</div>
         <div>
@@ -36,6 +38,12 @@ class User extends Component {
         <div>{/* <Route path="/user/:id" component={Detail} exact /> */}</div>
       </div>
     )
+  }
+  componentDidMount() {
+    // var ns = window.GC.Spread.Sheets
+    const GC = window.GC
+    let spread = new GC.Spread.Sheets.Workbook(this.refs.spreadJs, { sheetCount: 3 })
+    console.log('----spread----', spread)
   }
 }
 
